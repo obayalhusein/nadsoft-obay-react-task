@@ -1,11 +1,13 @@
+import { Typography } from "@mui/material";
 import Layout from "../../layouts/Dashboard";
 
-const homepage = () => {
+const dashboard = () => {
     return (
         <Layout>
-            <h1>Dashboard homepage</h1>
+            <Typography component="h1" variant="h4">Corona Virus statistics</Typography>
+            
         </Layout>
     );
 }
  
-export default homepage;
+export default dashboard;

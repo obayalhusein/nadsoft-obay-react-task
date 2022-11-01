@@ -1,25 +1,65 @@
-import { AppBar, Toolbar, Typography, IconButton } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, Toolbar, Typography, Box, CssBaseline, Drawer, Divider, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
+import Countries from "../api/countries";
 
-const layout = ({children}) => {
+const drawerWidth = 240;
+
+const layout = ({ children }) => {
+
+    const data = Countries();
+    const countries = data.map((country) =>
+        <ListItem key={country.Country} disablePadding>
+            <ListItemButton>
+                <ListItemText primary={country.Country} />
+            </ListItemButton>
+        </ListItem>
+    )
+
     return (
-        <>
-            <header>
-                <AppBar color="primary" position="static">
-                    <Toolbar>
-                        <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-                            <MenuIcon />
-                        </IconButton>
-                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                            Coronavirus
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
-            </header>
-            <main>{children}</main>
-            <footer>Dashboard Footer</footer>
-        </>
+        <Box sx={{ display: 'flex' }}>
+            <CssBaseline />
+            <AppBar
+                color="default"
+                position="fixed"
+                sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
+            >
+                <Toolbar>
+                    <Typography variant="h6" noWrap component="div">
+                        Coronavirus
+                    </Typography>
+                </Toolbar>
+            </AppBar>
+            <Drawer
+                sx={{
+                    width: drawerWidth,
+                    flexShrink: 0,
+                    '& .MuiDrawer-paper': {
+                        width: drawerWidth,
+                        boxSizing: 'border-box',
+                    },
+                }}
+                variant="permanent"
+                anchor="left"
+            >
+                <Toolbar />
+                <Divider />
+                <List>
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemText primary="All Countries" />
+                        </ListItemButton>
+                    </ListItem>
+                </List>
+                <Divider />
+                <List>
+                    {countries}
+                </List>
+            </Drawer>
+            <Box sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}>
+                <Toolbar />
+                {children}
+            </Box>
+        </Box>
     );
 }
- 
+
 export default layout;

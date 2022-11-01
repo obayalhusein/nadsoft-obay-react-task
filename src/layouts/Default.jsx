@@ -10,7 +10,6 @@ const layout = ({children}) => {
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                             Coronavirus
                         </Typography>
-                        <Button component={Link} to="/login" color="primary">Login</Button>
                     </Toolbar>
                 </AppBar>
             </header>
