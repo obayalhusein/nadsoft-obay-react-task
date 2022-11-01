@@ -3,6 +3,22 @@
     margin: 0;
 }
 
+html,
+body,
+#root {
+    min-height: 100vh;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main {
+    flex: auto;
+}
+
 img,
 svg {
     max-width: 100%;

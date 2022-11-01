@@ -1,4 +1,5 @@
-import { AppBar, Toolbar, Typography, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { AppBar, Toolbar, Typography, Button, Container, Divider } from '@mui/material';
 
 const layout = ({children}) => {
     return (
@@ -9,12 +10,19 @@ const layout = ({children}) => {
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                             Coronavirus
                         </Typography>
-                        <Button color="inherit">Login</Button>
+                        <Button component={Link} to="/login" color="primary">Login</Button>
                     </Toolbar>
                 </AppBar>
             </header>
             <main>{children}</main>
-            <footer>Footer</footer>
+            <footer>
+                <Container>
+                    <Divider />
+                    <Typography align="center" m={3}>
+                        copyright &copy; { new Date().getFullYear() }
+                    </Typography>
+                </Container>
+            </footer>
         </>
     );
 }
