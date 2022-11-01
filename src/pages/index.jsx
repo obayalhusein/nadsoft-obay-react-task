@@ -3,7 +3,7 @@ import Layout from "../layouts/Default";
 const homepage = () => {
     return (
         <Layout>
-            Welcome
+            <h1>Welcome</h1>
         </Layout>
     );
 }
