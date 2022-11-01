@@ -1,6 +1,10 @@
+import Layout from "../layouts/Default";
+
 const homepage = () => {
     return (
-        <h1>Welcome</h1>
+        <Layout>
+            Welcome
+        </Layout>
     );
 }
  

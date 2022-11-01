@@ -1,6 +1,10 @@
+import Layout from "../../layouts/Auth";
+
 const login = () => {
     return (
-        <h1>login page</h1>
+        <Layout>
+            <h1>login page</h1>
+        </Layout>
     );
 }
  

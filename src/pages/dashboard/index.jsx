@@ -1,6 +1,10 @@
+import Layout from "../../layouts/Dashboard";
+
 const homepage = () => {
     return (
-        <h1>Dashboard homepage</h1>
+        <Layout>
+            <h1>Dashboard homepage</h1>
+        </Layout>
     );
 }
  
