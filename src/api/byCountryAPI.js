@@ -3,11 +3,17 @@ import axios from './axios'
 
 export default function ByCountryAPI(slug) {
     const [country, setCountry] = useState([]);
-    
+
     useEffect(() => {
-        axios.get(`country/${slug}`).then(res => {
-            setCountry(res.data);
-        })
+        const fetch = async () => {
+            try {
+                const response = await axios.get(`country/${slug}`);
+                if(response && response.data) setCountry(response.data);
+            } catch(err) {
+                console.log(err.response);
+            }
+        }
+        fetch()
     }, []);
 
     return country;

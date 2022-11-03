@@ -5,14 +5,18 @@ import CountryAPI from "../../api/byCountryAPI";
 import Layout from "../../layouts/Dashboard";
 
 export default function ShowCountry () {
-    const id = useParams().id;
-    const [results, setResults] = useState([]);
+    let id = useParams().id;
     const [currentCountry, setCurrentCountry] = useState(id);
+    useEffect(() => {
+        setCurrentCountry(id)
+    }, []);
+    
+    const [results, setResults] = useState([]);
     
     let data = CountryAPI(currentCountry);
     useEffect(() => {
         setResults(data)
-    }, null);
+    }, []);
 
     return (
         <Layout>

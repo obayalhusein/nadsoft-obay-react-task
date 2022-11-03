@@ -6,9 +6,15 @@ export default function CountriesAPI() {
     const [countries, setCountries] = useState([]);
     
     useEffect(() => {
-        axios.get('countries').then(res => {
-            setCountries(res.data);
-        })
+        const fetch = async () => {
+            try {
+                const response = await axios.get('countries');
+                if(response && response.data) setCountries(response.data);
+            } catch(err) {
+                console.log(err.response);
+            }
+        }
+        fetch()
     }, []);
 
     return countries;
