@@ -1,22 +1,21 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import CountryAPI from "../../api/byCountryAPI";
+import { ByCountryAPI } from "../../api/casesAPI";
 import Layout from "../../layouts/Dashboard";
 
 export default function ShowCountry () {
-    let id = useParams().id;
-    const [currentCountry, setCurrentCountry] = useState(id);
-    useEffect(() => {
-        setCurrentCountry(id)
-    }, []);
-    
+    const { id } = useParams();
     const [results, setResults] = useState([]);
     
-    let data = CountryAPI(currentCountry);
-    useEffect(() => {
+    const getCountryData = async (countryId) => {
+        const data = await ByCountryAPI(countryId)
         setResults(data)
-    }, []);
+    }
+    useEffect(() => {
+        setResults([])
+        getCountryData(id);
+    }, [id]);
 
     return (
         <Layout>

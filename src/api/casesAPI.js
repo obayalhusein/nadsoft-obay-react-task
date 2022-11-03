@@ -1,8 +1,8 @@
 import axios from './axios'
 
-export default async function CountriesAPI() {
+export async function ByCountryAPI(slug) {
     try {
-        const response = await axios.get('countries');
+        const response = await axios.get(`country/${slug}`);
         return response && response.data ? response.data : [];
     } catch(err) {
         console.log(err.response);
