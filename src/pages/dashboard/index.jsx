@@ -2,6 +2,7 @@ import Layout from "../../layouts/Dashboard";
 import { Card, CardContent, Grid, Skeleton, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import SummaryAPI from "../../api/summaryAPI";
+import Moment from 'react-moment';
 
 const Overview = () => {
     const [summary, setSummary] = useState({});
@@ -18,7 +19,9 @@ const Overview = () => {
     return (
         <Layout>
             <Typography component="h1" variant="h4" mb={3}>Overview</Typography>
-            <Typography mb={3}>{ summary.Date || <Skeleton width={200} /> }</Typography>
+            <Typography mb={3}>
+                <Moment format="YYYY/MM/DD">{ summary.Date || <Skeleton width={200} /> }</Moment>
+            </Typography>
             <Grid container spacing={2}>
                 <Grid item xs={4}>
                     <Card>

@@ -7,6 +7,7 @@ import { DataGrid } from '@mui/x-data-grid';
 
 const columns = [
     { field: 'Country', headerName: 'Country', width: 200 },
+    { field: 'Date', headerName: 'Date', width: 200 },
     { field: 'Deaths', headerName: 'Deaths', type: 'number', width: 130 },
     { field: 'Confirmed', headerName: 'Confirmed', type: 'number', width: 130 },
     { field: 'Recovered', headerName: 'Recovered', type: 'number', width: 90 },
@@ -30,7 +31,7 @@ export default function ShowCountry () {
         <Layout>
             <Typography component="h1" variant="h4" mb={3}>Show country details</Typography>
 
-            <div style={{ height: 400, width: '100%', maxWidth: '700px' }}>
+            <div style={{ height: 400, width: '100%', maxWidth: '1000px' }}>
                 <DataGrid
                     getRowId={(row) => row.ID}
                     rows={results}
