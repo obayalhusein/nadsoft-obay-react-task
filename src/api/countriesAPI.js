@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from './axios'
 
-export default function Countries() {
+export default function CountriesAPI() {
 
     const [countries, setCountries] = useState([]);
     

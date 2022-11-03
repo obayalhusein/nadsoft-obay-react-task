@@ -1,14 +1,15 @@
 import { AppBar, Toolbar, Typography, Box, CssBaseline, Drawer, Divider, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
-import Countries from "../api/countries";
+import { Link } from 'react-router-dom';
+import CountriesAPI from "../api/countriesAPI";
 
 const drawerWidth = 240;
 
 const layout = ({ children }) => {
 
-    const data = Countries();
+    const data = CountriesAPI();
     const countries = data.map((country) =>
         <ListItem key={country.Country} disablePadding>
-            <ListItemButton>
+            <ListItemButton component={Link} to={`/dashboard/${country.Slug}`}>
                 <ListItemText primary={country.Country} />
             </ListItemButton>
         </ListItem>
@@ -44,7 +45,7 @@ const layout = ({ children }) => {
                 <Divider />
                 <List>
                     <ListItem disablePadding>
-                        <ListItemButton>
+                        <ListItemButton component={Link} to="/dashboard/">
                             <ListItemText primary="All Countries" />
                         </ListItemButton>
                     </ListItem>

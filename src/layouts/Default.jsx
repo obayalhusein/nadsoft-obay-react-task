@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-import { AppBar, Toolbar, Typography, Button, Container, Divider } from '@mui/material';
+import { AppBar, Toolbar, Typography, Container, Divider } from '@mui/material';
 
 const layout = ({children}) => {
     return (

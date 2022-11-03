@@ -2,7 +2,7 @@ import Layout from "../layouts/Default";
 import { Link } from 'react-router-dom';
 import { Box, Container, Button, Typography } from '@mui/material';
 
-const homepage = () => {
+const AppHome = () => {
     return (
         <Layout>
             <Box my={5} textAlign="center">
@@ -15,4 +15,4 @@ const homepage = () => {
     );
 }
  
-export default homepage;
+export default AppHome;
