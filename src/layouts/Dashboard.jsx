@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography, Box, CssBaseline, Drawer, Divider, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
+import { AppBar, Toolbar, Typography, Box, CssBaseline, Drawer, Divider, List, ListItem, ListItemButton, ListItemText, TextField } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import CountriesAPI from "../api/countriesAPI";
@@ -8,6 +8,7 @@ const drawerWidth = 240;
 export default function Layout({ children }) {
 
     const [countries, setCountries] = useState([]);
+    const [query, setQuery] = useState([]);
     
     const getCountriesData = async () => {
         const data = await CountriesAPI()
@@ -18,7 +19,7 @@ export default function Layout({ children }) {
         getCountriesData();
     }, []);
 
-    const countriesDom = countries.map((country) =>
+    const countriesDom = countries.filter(country => country.Country.toLowerCase().includes(query)).map((country) =>
         <ListItem key={country.Country} disablePadding>
             <ListItemButton component={Link} to={`/dashboard/${country.Slug}`}>
                 <ListItemText primary={country.Country} />
@@ -59,6 +60,9 @@ export default function Layout({ children }) {
                         <ListItemButton component={Link} to="/dashboard/">
                             <ListItemText primary="All Countries" />
                         </ListItemButton>
+                    </ListItem>
+                    <ListItem disablePadding>
+                        <TextField label="Search" variant="outlined" onChange={e => setQuery(e.target.value.toLowerCase())} sx={{ mx: 'auto' }} />
                     </ListItem>
                 </List>
                 <Divider />
